@@ -30,7 +30,8 @@
                                 "properties": {
                                     "nombre": { "type": "string" },
                                     "telefono": { "type": "string" }
-                                }
+                                },
+                                "required": ["nombre", "telefono"]
                             }
                         }
                     }
@@ -58,10 +59,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "clienteId": { "type": "integer" },
-                                    "barberoId": { "type": "integer" },
-                                    "fecha": { "type": "string", "format": "date-time" }
-                                }
+                                    "cliente_id": { "type": "integer" },
+                                    "barbero_id": { "type": "integer" },
+                                    "fecha": { "type": "string", "format": "date" },
+                                    "hora": { "type": "string", "format": "time" },
+                                    "servicio_id": { "type": "integer" }
+                                },
+                                "required": ["cliente_id", "barbero_id", "fecha", "hora", "servicio_id"]
                             }
                         }
                     }
@@ -92,7 +96,8 @@
                                     "citaId": { "type": "integer" },
                                     "monto": { "type": "number" },
                                     "metodo": { "type": "string" }
-                                }
+                                },
+                                "required": ["citaId", "monto", "metodo"]
                             }
                         }
                     }
@@ -112,4 +117,3 @@
         }
     }
 }
-
