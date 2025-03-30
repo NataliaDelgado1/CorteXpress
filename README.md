@@ -95,3 +95,54 @@ npm start
 El mensaje en la terminal fue:
 Servidor corriendo en http://localhost:3000
 Conectado a MariaDB 
+---------------------------------------------------------------------
+Documentacion Edith
+Ingrese a la base de datos corteXpres con su respectiva contraseña y agregue 
+las 6 tablas requeridas:
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE barberos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    especialidad VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE servicios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE citas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    barbero_id INT,
+    servicio_id INT,
+    fecha DATETIME NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    FOREIGN KEY (barbero_id) REFERENCES barberos(id),
+    FOREIGN KEY (servicio_id) REFERENCES servicios(id)
+);
+
+CREATE TABLE pagos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cita_id INT,
+    monto DECIMAL(10,2) NOT NULL,
+    metodo_pago VARCHAR(50) NOT NULL,
+    FOREIGN KEY (cita_id) REFERENCES citas(id)
+);
+
+CREATE TABLE horarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    barbero_id INT,
+    dia VARCHAR(20) NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
+    FOREIGN KEY (barbero_id) REFERENCES barberos(id)
+);
+
+
