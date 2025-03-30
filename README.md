@@ -145,7 +145,31 @@ CREATE TABLE horarios (
     FOREIGN KEY (barbero_id) REFERENCES barberos(id)
 );
 
-2.Implemente los modelos en Node.js para que interactuen con la base de datos, para esto
+2. 
+Implemente los modelos en Node.js para que interactuen con la base de datos, para esto
 en la carpeta backend cree una carpeta llama models.
 Dentro de la carpeta models cree archivos para cada usando el comando: touch cliente.js barbero.js servicio.js cita.js pago.js horario.js
 Posteriormente agregué codigo a los diferentes archivos creados anteriormente para cada tabla.
+3. implementar los endpoints rest
+
+ Cree rutas en Express para manejar las solicitudes HTTP, por lo cual dentro de la carpeta
+backend creo otra carpeta llamada routes.
+Creo archivos de rutas con el comando: touch clientes.js barberos.js servicios.js citas.js pagos.js horarios.js
+
+Agrego codigo base a cada archivo creado anteriormente, modifico index.js paraa incluir
+las rutas: const clienteRoutes = require("./routes/clientes");
+app.use("/clientes", clienteRoutes);
+
+4. documentacion api con swagger
+
+configuro Swagger para documentar los endpoints
+debo instalar Swagger con el comando: npm install swagger-ui-express
+DEntro de la carpeta backend/config creo un archivo llamado swagger.json en donde le agrego
+la documentacion de todaas las tablas correspondientes.
+
+Modifico el archivo index.js para incluir swagger con estas lineas de coodigo:
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./config/swagger.json");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
