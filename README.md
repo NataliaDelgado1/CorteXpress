@@ -90,8 +90,8 @@ CREATE DATABASE cortexpres_db;
 USE cortexpres_db;
 
 7.Prueba del Servidor y la Base de Datos
-Para verificar que todo funcionara correctamente, ejecuté:
-npm start 
+Para verificar que todo funcionara correctamente, ejecuté: 
+node index.js 
 El mensaje en la terminal fue:
 Servidor corriendo en http://localhost:3000
 Conectado a MariaDB 
@@ -174,14 +174,14 @@ const swaggerDocument = require("./config/swagger.json");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Documentacion Santiago Urbano
+
+
 1-Para manejar la lógica de negocio de la API, creé los controllers en la carpeta backend/controllers/. 
 Aquí están las funciones que interactúan con la base de datos.
 
 Por ejemplo, en clientesController.js, definí un método para obtener los clientes de la base de datos:
 
-javascript
-Copiar
-Editar
 const db = require("../config/db");
 
 exports.obtenerClientes = (req, res) => {
@@ -195,9 +195,6 @@ Hice lo mismo para los demás recursos, como barberos, citas, servicios y pagos.
 
 Este es el contenido del archivo:
 
-dockerfile
-Copiar
-Editar
 # Imagen base de Node.js
 FROM node:18  
 
@@ -223,3 +220,8 @@ Ingresé a:
 http://localhost:3000/api-docs
 
 Desde ahí, pude probar las solicitudes y asegurarme de que el backend estaba respondiendo bien.
+3- realice algunos cambios dentro de las tablas de la base de datos , como 
+el nombre de la columna dia y tipo de dato tambien de la tabla citas el nombre de la columna metodo_pago
+a metodo de la tabla pagos.
+4-Agregue algunas configuraciones necesarias de POST , en los archivos models y routes
+5-por último probe en la direccion de pagina y los resultados fueron satisfactorios. 
