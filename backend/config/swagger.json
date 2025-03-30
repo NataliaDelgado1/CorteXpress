@@ -1,0 +1,115 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CorteXpres API",
+        "version": "1.0.0",
+        "description": "API REST para la gestión de una barbería"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/clientes": {
+            "get": {
+                "summary": "Obtener lista de clientes",
+                "responses": {
+                    "200": { "description": "Lista de clientes" }
+                }
+            },
+            "post": {
+                "summary": "Registrar un nuevo cliente",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nombre": { "type": "string" },
+                                    "telefono": { "type": "string" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": { "description": "Cliente registrado exitosamente" }
+                }
+            }
+        },
+        "/barberos": {
+            "get": {
+                "summary": "Obtener lista de barberos",
+                "responses": {
+                    "200": { "description": "Lista de barberos" }
+                }
+            }
+        },
+        "/citas": {
+            "post": {
+                "summary": "Crear una cita",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "clienteId": { "type": "integer" },
+                                    "barberoId": { "type": "integer" },
+                                    "fecha": { "type": "string", "format": "date-time" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": { "description": "Cita creada exitosamente" }
+                }
+            }
+        },
+        "/servicios": {
+            "get": {
+                "summary": "Obtener lista de servicios",
+                "responses": {
+                    "200": { "description": "Lista de servicios disponibles" }
+                }
+            }
+        },
+        "/pagos": {
+            "post": {
+                "summary": "Registrar un pago",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "citaId": { "type": "integer" },
+                                    "monto": { "type": "number" },
+                                    "metodo": { "type": "string" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": { "description": "Pago registrado exitosamente" }
+                }
+            }
+        },
+        "/horarios": {
+            "get": {
+                "summary": "Obtener lista de horarios",
+                "responses": {
+                    "200": { "description": "Lista de horarios disponibles" }
+                }
+            }
+        }
+    }
+}
+
