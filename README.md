@@ -91,7 +91,7 @@ USE cortexpres_db;
 
 7.Prueba del Servidor y la Base de Datos
 Para verificar que todo funcionara correctamente, ejecuté:
-npm start
+npm start 
 El mensaje en la terminal fue:
 Servidor corriendo en http://localhost:3000
 Conectado a MariaDB 
@@ -173,3 +173,53 @@ const swaggerDocument = require("./config/swagger.json");
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1-Para manejar la lógica de negocio de la API, creé los controllers en la carpeta backend/controllers/. 
+Aquí están las funciones que interactúan con la base de datos.
+
+Por ejemplo, en clientesController.js, definí un método para obtener los clientes de la base de datos:
+
+javascript
+Copiar
+Editar
+const db = require("../config/db");
+
+exports.obtenerClientes = (req, res) => {
+    db.query("SELECT * FROM clientes", (err, results) => {
+        if (err) res.status(500).json({ error: err.message });
+        else res.json(results);
+    });
+};
+Hice lo mismo para los demás recursos, como barberos, citas, servicios y pagos.
+2-Para que el backend funcione en un contenedor Docker, creé el archivo Dockerfile dentro de la carpeta backend/.
+
+Este es el contenido del archivo:
+
+dockerfile
+Copiar
+Editar
+# Imagen base de Node.js
+FROM node:18  
+
+# Establecer directorio de trabajo
+WORKDIR /app  
+
+# Copiar dependencias
+COPY package*.json ./  
+RUN npm install  
+
+# Copiar el resto de los archivos
+COPY . .  
+
+# Exponer el puerto de la API
+# EXPOSE 3000  
+
+Comando para iniciar el servidor
+CMD ["node", "index.js"]
+Con esto, el backend puede ejecutarse en Docker de manera aislada.
+Para comprobar que los endpoints funcionaban correctamente, usé la documentación en Swagger, que ya estaba configurada.
+
+Ingresé a:
+http://localhost:3000/api-docs
+
+Desde ahí, pude probar las solicitudes y asegurarme de que el backend estaba respondiendo bien.
