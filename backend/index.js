@@ -2,9 +2,11 @@ require("dotenv").config();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./config/swagger.json");
 const express = require("express");
+const cors = require("cors"); // Agregar esta línea
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors()); // Agregar esta línea
 app.use(express.json());
 
 // Rutas para cada recurso
