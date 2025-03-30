@@ -97,7 +97,7 @@ Servidor corriendo en http://localhost:3000
 Conectado a MariaDB 
 ---------------------------------------------------------------------
 Documentacion Edith
-Ingrese a la base de datos corteXpres con su respectiva contraseña y agregue 
+1.Ingrese a la base de datos corteXpres con su respectiva contraseña y agregue 
 las 6 tablas requeridas:
 CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -145,4 +145,7 @@ CREATE TABLE horarios (
     FOREIGN KEY (barbero_id) REFERENCES barberos(id)
 );
 
-
+2.Implemente los modelos en Node.js para que interactuen con la base de datos, para esto
+en la carpeta backend cree una carpeta llama models.
+Dentro de la carpeta models cree archivos para cada usando el comando: touch cliente.js barbero.js servicio.js cita.js pago.js horario.js
+Posteriormente agregué codigo a los diferentes archivos creados anteriormente para cada tabla.
