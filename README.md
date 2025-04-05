@@ -225,3 +225,14 @@ el nombre de la columna dia y tipo de dato tambien de la tabla citas el nombre d
 a metodo de la tabla pagos.
 4-Agregue algunas configuraciones necesarias de POST , en los archivos models y routes
 5-por último probe en la direccion de pagina y los resultados fueron satisfactorios. 
+------------------------------------------------------------------------------------------------------------------
+SEGUNDA ENTREGA 
+Natalia Arcos Delgado
+cree una nueva rama, y realicé algunos cambios como:
+1-Eliminé la carpeta docker, y moví sus archicos a la carpeta backend ya que en él tenia el archivo docker compose y en el archivo 
+backend estaba dockerfile y env. entonces decidimos unirlos.
+2-De esta manera continué configurando entonces docker-compose.yml ya que necesitaba unir al docker la api.
+3-Configuré el docker,cambiando su nombre. 
+4-luego eliminé algunos datos que habiamos ingresado a la base de datos como prueba y exporté. 
+5-Por último agregué las configuraciones necesarias en el archivo swagger para poder agregar put,delete y post en algunas tablas como también organizarlas.
+6-comprobe su funcionamiento y la respuesta fue satisfactoria.
