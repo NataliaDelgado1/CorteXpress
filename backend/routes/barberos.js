@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Barbero = require("../models/barbero");
+const Barbero = require("../controllers/barberosController");
 
-router.get("/", (req, res) => {
-    Barbero.getAll((err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(results);
-    });
-});
+router.get("/", Barbero.getBarberos);
+router.post("/", Barbero.createBarbero);
+router.put("/:id", Barbero.updateBarbero);
+router.delete("/:id", Barbero.deleteBarbero);
 
 module.exports = router;
