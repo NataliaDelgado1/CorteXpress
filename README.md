@@ -236,3 +236,10 @@ backend estaba dockerfile y env. entonces decidimos unirlos.
 4-luego eliminé algunos datos que habiamos ingresado a la base de datos como prueba y exporté. 
 5-Por último agregué las configuraciones necesarias en el archivo swagger para poder agregar put,delete y post en algunas tablas como también organizarlas.
 6-comprobe su funcionamiento y la respuesta fue satisfactoria.
+---------------------------------------------------------------------------------------------------------
+Edith Uyaque
+Cree una nueva rama y realice cambios en la carpeta de models, modificando
+cada archivo que contiene para agregar los nuevos endpoints como son el de 
+put, delete. 
+Lo mismo realice en la carpeta de routes, modifique todos los archivos que
+contiene con el put y delete
