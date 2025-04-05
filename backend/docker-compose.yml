@@ -14,5 +14,20 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  api:
+    build: .
+    container_name: corteXpres_api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_NAME=corteXpres
+      - PORT=3000
+
 volumes:
   db_data:

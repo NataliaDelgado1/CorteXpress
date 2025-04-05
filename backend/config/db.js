@@ -1,10 +1,10 @@
 const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    password: "admin",
-    database: "corteXpres"
+    host: process.env.DB_HOST || "db",          // Usa el valor del .env o por defecto "db"
+    user: process.env.DB_USER || "admin",
+    password: process.env.DB_PASSWORD || "admin",
+    database: process.env.DB_NAME || "corteXpres"
 });
 
 connection.connect((err) => {
@@ -16,3 +16,4 @@ connection.connect((err) => {
 });
 
 module.exports = connection;
+
