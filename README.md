@@ -225,7 +225,7 @@ el nombre de la columna dia y tipo de dato tambien de la tabla citas el nombre d
 a metodo de la tabla pagos.
 4-Agregue algunas configuraciones necesarias de POST , en los archivos models y routes
 5-por último probe en la direccion de pagina y los resultados fueron satisfactorios. 
-------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SEGUNDA ENTREGA 
 Natalia Arcos Delgado
 cree una nueva rama, y realicé algunos cambios como:
@@ -236,10 +236,24 @@ backend estaba dockerfile y env. entonces decidimos unirlos.
 4-luego eliminé algunos datos que habiamos ingresado a la base de datos como prueba y exporté. 
 5-Por último agregué las configuraciones necesarias en el archivo swagger para poder agregar put,delete y post en algunas tablas como también organizarlas.
 6-comprobe su funcionamiento y la respuesta fue satisfactoria.
----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Edith Uyaque
 Cree una nueva rama y realice cambios en la carpeta de models, modificando
 cada archivo que contiene para agregar los nuevos endpoints como son el de 
 put, delete. 
 Lo mismo realice en la carpeta de routes, modifique todos los archivos que
 contiene con el put y delete
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Jeiver Santiago Urbano 
+1-cloné el repositorio, cree una nueva rama e importe la base de datos 
+2- realicé cambios en cada tabla del archivo controllers, agregando los nuevos endpoints como 
+agregar,eliminar y actualizar.
+3-verifique que todo funcione correctamente 0betiendo un resultado satisfactorio.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Pasos para ejecución
+1-clonar el repositorio: git clone
+2-copiar el archivo backup.sql al contenedor docker cp
+3-importar la base de datos  docker exec -it corteXpres_db bash
+4-iniciar los contenedores docker start corteXpres_api
+5-Por último reconstruimos las imágenes, actualizamos  y levantamos los contenedores : docker-compose up -d
+ 
