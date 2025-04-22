@@ -277,4 +277,45 @@ volumes:
 llamado cortexpress-api con su id my-client y su clave secreta 88BmvdJfTdOV8qARqWZVKnQefHLWXZVi
 3-por último instalé algunos paquetes necesarios para las siguientes configuraciones como npm install swagger-ui-express swagger-jsdoc
 y npm install keycloak-connect express-session
+-------------------------------------------------------------------------------------------------------
+Edith Uyaque
+1. Cree y configure el archivo keycloak.js dentro de la carpeta config:
+
+const session = require('express-session');
+const Keycloak = require('keycloak-connect');
+
+// Configuración de sesión para Express
+const memoryStore = new session.MemoryStore();
+
+// Configuración del cliente Keycloak
+const keycloak = new Keycloak({ store: memoryStore }, {
+  clientId: 'my-client', // ID del cliente en Keycloak
+  bearerOnly: true,
+  serverUrl: 'http://localhost:8080/', // URL de tu Keycloak
+  realm: 'CorteXpress',               // Nombre del realm
+  credentials: {
+    secret: '88BmvdJfTdOV8qARqWZVKnQefHLWXZVi'          // Lo encuentras en la pestaña "Credentials" del cliente
+  }
+});
+
+module.exports = { keycloak, memoryStore };
+2. Edite el archivo .env con client secret
+
+SESSION_SECRET=88BmvdJfTdOV8qARqWZVKnQefHLWXZVi
+3. Agregue este fragmento de codigo al archivo swagger.json
+"components": {
+  "securitySchemes": {
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  }
+},
+"security": [
+  {
+    "bearerAuth": []
+  }
+],
+--------------------------------------------------------------------------------
 
