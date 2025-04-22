@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   db:
     image: mariadb:latest
@@ -22,12 +23,25 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - keycloak  # 
     environment:
       - DB_HOST=db
       - DB_USER=admin
       - DB_PASSWORD=admin
       - DB_NAME=corteXpres
       - PORT=3000
+    volumes:
+      - .:/app  #
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080" #
 
 volumes:
   db_data:
