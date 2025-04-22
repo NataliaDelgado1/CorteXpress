@@ -319,3 +319,5 @@ SESSION_SECRET=88BmvdJfTdOV8qARqWZVKnQefHLWXZVi
 ],
 --------------------------------------------------------------------------------
 
+NATALIA ARCOS 
+1exporte el cliente creado en keycloak
