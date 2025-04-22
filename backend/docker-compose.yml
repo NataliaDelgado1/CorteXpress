@@ -23,7 +23,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
-      - keycloak  # 
+      - keycloak
     environment:
       - DB_HOST=db
       - DB_USER=admin
@@ -31,17 +31,19 @@ services:
       - DB_NAME=corteXpres
       - PORT=3000
     volumes:
-      - .:/app  #
+      - .:/app
 
   keycloak:
     image: quay.io/keycloak/keycloak:24.0.1
     container_name: keycloak
-    command: start-dev
+    command: start-dev --import-realm
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
-      - "8080:8080" #
+      - "8080:8080"
+    volumes:
+      - ./keycloak-config:/opt/keycloak/data/import  # 
 
 volumes:
   db_data:
