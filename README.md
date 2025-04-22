@@ -257,3 +257,24 @@ Pasos para ejecución
 4-iniciar los contenedores docker start corteXpres_api
 5-Por último reconstruimos las imágenes, actualizamos  y levantamos los contenedores : docker-compose up -d
  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AUTENTICAR CON KEYCLOAK
+NATALIA ARCOS DELGADO 
+1-agregué la siguiente configuración al archivo docker-compose para dockerisar keycloak.
+ keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080" #
+
+volumes:
+  db_data:
+2-comprobé que funcione keycloak en el puerto 8080 y asi fue, entonces continue creando un REALM llamado CorteXpress, también un cliente secret , 
+llamado cortexpress-api con su id my-client y su clave secreta 88BmvdJfTdOV8qARqWZVKnQefHLWXZVi
+3-por último instalé algunos paquetes necesarios para las siguientes configuraciones como npm install swagger-ui-express swagger-jsdoc
+y npm install keycloak-connect express-session
+
