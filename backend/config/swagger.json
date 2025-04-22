@@ -19,6 +19,20 @@
       { "name": "Pagos", "description": "Endpoints de pagos" },
       { "name": "Horarios", "description": "Endpoints para ver los horarios" }
     ],
+    "components": {
+  "securitySchemes": {
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  }
+},
+"security": [
+  {
+    "bearerAuth": []
+  }
+],
     "paths": {
       "/clientes": {
         "get": {
